@@ -3,9 +3,6 @@
 import re
 import argparse
 
-WORD = "Hi"
-REPLACEMENT = "Hello"
-
 
 def get_parameters():
     """Get parameters from user input."""
