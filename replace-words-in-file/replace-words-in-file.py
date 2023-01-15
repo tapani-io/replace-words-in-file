@@ -41,8 +41,6 @@ def find_and_replace(input_file, output_file, original_word, replacement_word):
 
 def validate_input_file(i):
 
-    valid = True
-
     while True:
 
         # Validate input file path exists.
