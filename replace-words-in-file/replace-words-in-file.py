@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import os
-import os.path
 import re
 import argparse
 
@@ -77,7 +76,7 @@ def main():
 
     valid = validate_input_file(input_file)
 
-    if valid == True:
+    if valid is True:
         find_and_replace(input_file, output_file, original_word, replacement_word)
 
 
