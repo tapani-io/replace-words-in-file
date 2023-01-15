@@ -20,6 +20,8 @@ def get_parameters():
 
 def find_and_replace(input_file, output_file, original_word, replacement_word):
 
+    count = 0
+
     # Variable for storing converted data.
     converted_data = []
 
@@ -29,13 +31,17 @@ def find_and_replace(input_file, output_file, original_word, replacement_word):
 
     # Find and replace content.
     for row in data:
-        row = re.sub(original_word, replacement_word, row.rstrip())
+        if original_word in row:
+            row = re.sub(original_word, replacement_word, row.rstrip())
+            count += 1
         converted_data.append(row)
 
     # Write to file.
     with open(output_file, "w") as f:
         for row in converted_data:
             f.write(row + "\n")
+
+    return count
 
 
 def validate_input_file(i):
@@ -101,7 +107,8 @@ def main():
     valid = validate_output_file(output_file)
 
     if valid is True:
-        find_and_replace(input_file, output_file, original_word, replacement_word)
+        replace_count = find_and_replace(input_file, output_file, original_word, replacement_word)
+        print(str(replace_count) + " were replaced.")
 
 
 if __name__ == "__main__":
