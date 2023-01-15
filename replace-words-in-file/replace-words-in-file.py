@@ -76,11 +76,11 @@ def validate_output_file(i):
 
             prompt = input("Error. Output file " + i + " exists. Overwrite it (y/n)? ")
 
-            if prompt != "y":
-                valid = False
+            if prompt == "y":
+                valid = True
                 break
             else:
-                valid = True
+                valid = False
                 break
 
         valid = True
