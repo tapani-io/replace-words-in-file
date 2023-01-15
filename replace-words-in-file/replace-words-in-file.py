@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import os
+import os.path
 import re
 import argparse
 
@@ -37,16 +39,35 @@ def find_and_replace(input_file, output_file, original_word, replacement_word):
             f.write(row + "\n")
 
 
-class Validate:
+def validate_input_file(i):
 
-    def input_file(i):
-        pass
+    valid = True
 
-    def output_file(i):
-        pass
+    while True:
 
-    def word(i):
-        pass
+        # Validate input file path exists.
+        if os.path.exists(i) is False:
+            print("Error. Couldn't find input file: " + i)
+            valid = False
+            break
+
+        # Validate input file is a file.
+        if os.path.isfile(i) is False:
+            print("Error. Input file is not a file.")
+            valid = False
+            break
+
+        # Validate file size. Maximum is 10mb.
+        if os.path.getsize(i) > 10485760:
+            print("Error. Input file is too large (max 10mb).")
+            valid = False
+            break
+
+        valid = True
+
+        break
+
+    return valid
 
 
 def main():
@@ -56,9 +77,10 @@ def main():
     original_word = get_parameters().original_word
     replacement_word = get_parameters().replacement_word
 
-    Validate.input_file("hello")
+    valid = validate_input_file("test.txt")
 
-    # find_and_replace(input_file, output_file, original_word, replacement_word)
+    # if valid = True:
+        # find_and_replace(input_file, output_file, original_word, replacement_word)
 
 
 if __name__ == "__main__":
