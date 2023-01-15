@@ -77,21 +77,28 @@ def validate_output_file(i):
 
     while True:
 
-        # Validate output file doesn't exist. If yes, prompt to overwrite or not.
-        if os.path.exists(i) is True:
+        try:
 
-            prompt = input("Error. Output file " + i + " exists. Overwrite it (y/n)? ")
+            # Validate output file doesn't exist. If yes, prompt to overwrite or not.
+            if os.path.exists(i) is True:
 
-            if prompt == "y":
-                valid = True
-                break
-            else:
-                valid = False
-                break
+                prompt = input("Error. Output file " + i + " exists. Overwrite it (y/n)? ")
 
-        valid = True
+                if prompt == "y":
+                    valid = True
+                    break
+                else:
+                    valid = False
+                    break
 
-        break
+            valid = True
+
+            break
+
+        except TypeError:
+            print("Error. You didn't choose an output file.")
+            valid = False
+            break
 
     return valid
 
@@ -108,7 +115,7 @@ def main():
 
     if valid is True:
         replace_count = find_and_replace(input_file, output_file, original_word, replacement_word)
-        print(str(replace_count) + " were replaced.")
+        print(str(replace_count) + " words were replaced.")
 
 
 if __name__ == "__main__":
