@@ -58,7 +58,7 @@ def validate_input_file(i):
             break
 
         # Validate file size. Maximum is 10mb.
-        if os.path.getsize(i) > 600:
+        if os.path.getsize(i) > 10485760:
             print("Error. Input file is too large (max 10mb).")
             valid = False
             break
