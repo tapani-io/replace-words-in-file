@@ -58,7 +58,7 @@ def validate_input_file(i):
             break
 
         # Validate file size. Maximum is 10mb.
-        if os.path.getsize(i) > 10485760:
+        if os.path.getsize(i) > 600:
             print("Error. Input file is too large (max 10mb).")
             valid = False
             break
@@ -77,10 +77,10 @@ def main():
     original_word = get_parameters().original_word
     replacement_word = get_parameters().replacement_word
 
-    valid = validate_input_file("test.txt")
+    valid = validate_input_file(input_file)
 
-    # if valid = True:
-        # find_and_replace(input_file, output_file, original_word, replacement_word)
+    if valid == True:
+        find_and_replace(input_file, output_file, original_word, replacement_word)
 
 
 if __name__ == "__main__":
