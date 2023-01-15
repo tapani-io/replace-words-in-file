@@ -37,6 +37,18 @@ def find_and_replace(input_file, output_file, original_word, replacement_word):
             f.write(row + "\n")
 
 
+class Validate:
+
+    def input_file(i):
+        pass
+
+    def output_file(i):
+        pass
+
+    def word(i):
+        pass
+
+
 def main():
 
     input_file = get_parameters().input_file
@@ -44,7 +56,9 @@ def main():
     original_word = get_parameters().original_word
     replacement_word = get_parameters().replacement_word
 
-    find_and_replace(input_file, output_file, original_word, replacement_word)
+    Validate.input_file("hello")
+
+    # find_and_replace(input_file, output_file, original_word, replacement_word)
 
 
 if __name__ == "__main__":
